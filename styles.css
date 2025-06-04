@@ -6,7 +6,7 @@
   scroll-behavior: smooth;
 }
 .header {
-  background-image: linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(img1back.jpg.jpg);
+  background-image: linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(img1back.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
