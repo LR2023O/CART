@@ -1,10 +1,10 @@
     var navLinks = document.getElementById("menu-icon");
     function showMenu(){
-        navLinks.style.right = "0"
+        navLinks.style.top = "0"
     }
     var navLinks = document.getElementById("nav");
      function hideMenu(){
-        navLinks.style.right = "-200px"
+        navLinks.style.top = "-500px"
     }
 
     window.onscroll = function(){
