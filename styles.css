@@ -6,7 +6,7 @@
   scroll-behavior: smooth;
 }
 .header {
-  background-image: linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(images/img1back.jpg.jpg);
+  background-image: linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(img1back.jpg.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -157,7 +157,7 @@
     }
     .content1-col{
       flex-basis: 30%;
-      background-image: url(images/background1.avif);
+      background-image: url(background1.avif);
       border-radius: 10px;
       margin-bottom: 5%;
       padding: 20px 12px;
@@ -208,7 +208,7 @@
       translate: scale(1.01);
     }
     #footer{
-      background-image:linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(images/img5f.jpg);
+      background-image:linear-gradient(rgba(36, 36, 36, 0.7),rgba(36, 36, 36, 0.7)), url(img5f.jpg);
       background-size: cover;
       background-position: center;
       position: relative;
