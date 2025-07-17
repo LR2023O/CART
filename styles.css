@@ -59,7 +59,7 @@
    width: 100%; /* Full width */
    height: 100px;
 
-  background: linear-gradient(rgba(20, 20, 20, 0.85), rgba(51, 51, 51, 0.85));
+  background: linear-gradient(rgba(31, 31, 31, 0.85), rgba(61, 61, 61, 0.85));
   color: white; /* Add a visible text color */
   display: flex;
   align-items: center; /* Vertically center content */
@@ -199,6 +199,7 @@
     .content2{
       padding-top: 5%;
       padding-bottom: 5%;
+      padding-left: 30px;
     }
     .content3{
       padding-top: 5%;
@@ -207,9 +208,13 @@
       margin: auto;
       text-align: center;
       padding-bottom: 5%; 
-      background-color: #fff;
+      background-color: #f1f1f1;
       box-shadow: 0 0 10px rgb(36, 36, 36),0 0 20px rgb(36, 36, 36);
       translate: scale(1.01);
+    }
+    #gallery{
+      text-align: center;
+      padding-bottom: 20px;
     }
     .content5{
       padding-top: 100px;
@@ -258,7 +263,7 @@
 }
 
     #footerg{
-      background-image: url(images/navybback.jpg);
+      background-image: url(navybback.jpg);
       background-size: cover;
       background-position: center;
       position: relative;
@@ -292,7 +297,7 @@
       translate: scale(1.01);
     }
   .container6{
-    padding: 50px;
+    padding: 5px;
     /* padding-top: 120px; */
   }
   .galaryhead{
@@ -317,6 +322,7 @@
   scrollbar-width: none;
   max-height: 600px;
   box-shadow: 0 0 10px rgb(36, 36, 36),0 0 20px rgb(36, 36, 36);;
+  width: 100%;
 }
 .slider img{
   flex: 100%;
@@ -438,9 +444,9 @@
 
     @media (max-width: 750px) {
       .logo{
+        position: absolute;
         height: 70px;
         padding-top: 0px;
-        position: absolute;
       }
       .header{
         min-height: 50vh;
@@ -513,7 +519,11 @@
       /* padding-left: 70px; */
     }
     .content3{
-      padding-left: 10px;
+      padding-top: 10px;
+      /* padding-left: 10px; */
+    }
+    #gallery{
+      padding-bottom: 20px;
     }
     #list{
       padding-left: 20px;
@@ -539,11 +549,16 @@
   .slider-navi {
     column-gap: 5px;
     top: 0.8rem;
+    
   }
 
   .slider-navi a {
-    width: 2px !important;
-    height: 6px
+    display: none;
+    width: 0.5px !important;
+    height: 2px
   }
-
+  /* .slider{
+    height: auto;
+    width: 100%
+  } */
 }
