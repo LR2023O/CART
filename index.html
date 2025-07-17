@@ -16,7 +16,7 @@
             </div>
    
      <nav>
-        <img src="larry.gif" class="logo">
+        <img src="images/larry.gif" class="logo">
         <div id="nav" class="navLinks">  
             <i class="bi bi-x" onclick="hideMenu()"></i>
             <ul>
@@ -150,19 +150,19 @@ and Duk counties) and Upper Nile States (Ulang, Maiwut, Renk, Panyikang, Nasir c
        <button class="slider-btn prev">&#10094;</button> <!-- Left arrow -->
         <div class="slider">
   <div class="slide" id="slide1">
-    <img src="sanitation_PhotoGrid.png" alt="">
+    <img src="images/sanitation_PhotoGrid.png" alt="">
     <div class="caption"> Water, Sanitation & Hygiene</div>
   </div>
   <div class="slide" id="slide2">
-    <img src="women_PhotoGrid.png" alt="">
+    <img src="images/women_PhotoGrid.png" alt="">
     <div class="caption"> Enumerator conduction data collection as part of humanitarian operations research</div>
   </div>
   <div class="slide" id="slide3">
-    <img src="women2.jpg" alt="">
+    <img src="images/women2.jpg" alt="">
     <div class="caption">GBV and  literacy training</div>
   </div>
 <div class="slide" id="slide4">
-    <img src="women6.jpg" alt="">
+    <img src="images/women6.jpg" alt="">
     <div class="caption"> Peer counselling under nutrition project un Upper Nile, South Sudan</div>
   </div>
 </div>
@@ -203,8 +203,8 @@ and Duk counties) and Upper Nile States (Ulang, Maiwut, Renk, Panyikang, Nasir c
          <h4 style="color: #fff;font-family: 'Times New Roman', Times, serif;">Some of our major partners:</h4>
     <br>
     <div class="imgg" >
-      <img src="USA.jpg" alt=""style="width: 20%;padding-right: 5px;">
-        <img src="irc.jpg" alt="" style="width: 20%;">
+      <img src="images/USA.jpg" alt=""style="width: 20%;padding-right: 5px;">
+        <img src="images/irc.jpg" alt="" style="width: 20%;">
       </div>
         <h4 id="contact" style="color: #fff;font-family: 'Times New Roman', Times, serif;"> Contacts: </h4>
         <br>
@@ -222,62 +222,7 @@ and Duk counties) and Upper Nile States (Ulang, Maiwut, Renk, Panyikang, Nasir c
 <p style="color: #fff;align-content: end;font-family: 'Times New Roman', Times, serif;font-size: small;">Copyright &copy; 2022 CART-SS.</p>
 
 </section>
-<script>
-  const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slide');
-  const navLinks = document.querySelectorAll('.slider-navi a');
-  const nextBtn = document.querySelector('.slider-btn.next');
-  const prevBtn = document.querySelector('.slider-btn.prev');
 
-  let currentIndex = 0;
-  const slideWidth = slides[0].offsetWidth;
-
-  // Scroll to a specific slide
-  function scrollToSlide(index) {
-    slider.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
-  }
-
-  // Next button with looping
-  nextBtn.addEventListener('click', () => {
-    currentIndex++;
-    if (currentIndex >= slides.length) {
-      currentIndex = 0; // Loop to first
-    }
-    scrollToSlide(currentIndex);
-  });
-
-  // Prev button with looping
-  prevBtn.addEventListener('click', () => {
-    currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex = slides.length - 1; // Loop to last
-    }
-    scrollToSlide(currentIndex);
-  });
-
-  // Observer to update nav indicator
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-
-        // Update active nav dot
-        navLinks.forEach((link, index) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-            currentIndex = index; // Update currentIndex based on view
-          }
-        });
-      }
-    });
-  }, {
-    root: slider,
-    threshold: 0.6
-  });
-
-  slides.forEach(slide => observer.observe(slide));
-</script>
 <script>
 var menuIcon = document.getElementById("menu-icon");
 var navLinks = document.getElementById("nav");
@@ -289,21 +234,58 @@ function showMenu() {
 function hideMenu() {
     navLinks.style.top = "-50vh";
 }
+  
+window.onload = function () {
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const navDots = document.querySelectorAll('.slider-navi a');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    const prevBtn = document.querySelector('.slider-btn.prev');
 
-window.onscroll = function () {
-    const btn = document.getElementById("pointer");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
+    let currentIndex = 0;
+    const slideWidth = slides[0] ? slides[0].offsetWidth : 0;
+
+    function scrollToSlide(index) {
+      slider.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
     }
-};
 
-function scrollTop() {
-window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (nextBtn && prevBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        scrollToSlide(currentIndex);
+      });
 
-}
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        scrollToSlide(currentIndex);
+      });
+    }
+
+    // Add IntersectionObserver to highlight nav dots
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navDots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('href') === `#${id}`) {
+              dot.classList.add('active');
+              currentIndex = Array.from(navDots).indexOf(dot);
+            }
+          });
+        }
+      });
+    }, {
+      root: slider,
+      threshold: 0.5
+    });
+
+    slides.forEach(slide => observer.observe(slide));
+  };
+
+
 </script>
+
 </body>
 <!-- javascript menu  -->
 
