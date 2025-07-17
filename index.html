@@ -219,41 +219,61 @@ and Duk counties) and Upper Nile States (Ulang, Maiwut, Renk, Panyikang, Nasir c
 </section>
 <script>
   const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slide'); // Each individual slide
+  const slides = document.querySelectorAll('.slide');
   const navLinks = document.querySelectorAll('.slider-navi a');
   const nextBtn = document.querySelector('.slider-btn.next');
   const prevBtn = document.querySelector('.slider-btn.prev');
 
-  // Scroll the slider left/right on button click
+  let currentIndex = 0;
+  const slideWidth = slides[0].offsetWidth;
+
+  // Scroll to a specific slide
+  function scrollToSlide(index) {
+    slider.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+  }
+
+  // Next button with looping
   nextBtn.addEventListener('click', () => {
-    slider.scrollBy({ left: 300, behavior: 'smooth' });
+    currentIndex++;
+    if (currentIndex >= slides.length) {
+      currentIndex = 0; // Loop to first
+    }
+    scrollToSlide(currentIndex);
   });
 
+  // Prev button with looping
   prevBtn.addEventListener('click', () => {
-    slider.scrollBy({ left: -300, behavior: 'smooth' });
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = slides.length - 1; // Loop to last
+    }
+    scrollToSlide(currentIndex);
   });
 
-  // Observer to detect which slide is in view and highlight corresponding nav dot
+  // Observer to update nav indicator
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id'); // e.g. 'slide1'
+        const id = entry.target.getAttribute('id');
 
-        navLinks.forEach(link => {
+        // Update active nav dot
+        navLinks.forEach((link, index) => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
+            currentIndex = index; // Update currentIndex based on view
           }
         });
       }
     });
   }, {
-    root: slider,       // Make sure we're observing inside the slider container
-    threshold: 0.6      // 60% of slide visible triggers detection
+    root: slider,
+    threshold: 0.6
   });
 
   slides.forEach(slide => observer.observe(slide));
 </script>
+
     <script>
   var menuIcon = document.getElementById("menu-icon");
 var navLinks = document.getElementById("nav");
