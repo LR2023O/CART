@@ -254,6 +254,7 @@
       position: relative;
       min-height: 90vh;
       width: 100%; 
+      box-shadow: 0 0 10px rgb(36, 36, 36),0 0 20px rgb(36, 36, 36);
     }
     .footer-line {
   height: 1px;
